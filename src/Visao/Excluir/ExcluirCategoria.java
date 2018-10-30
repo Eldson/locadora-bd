@@ -9,12 +9,12 @@ package Visao.Excluir;
  *
  * @author aluno
  */
-public class ExcluirClassificacao extends javax.swing.JFrame {
+public class ExcluirCategoria extends javax.swing.JFrame {
 
     /**
      * Creates new form ExcluirCategoria
      */
-    public ExcluirClassificacao() {
+    public ExcluirCategoria() {
         initComponents();
     }
 
@@ -36,7 +36,7 @@ public class ExcluirClassificacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("                                                             Deletar Classificação");
+        jLabel1.setText("                                                             Deletar Categoria");
 
         jLabel2.setText("Nome");
 
@@ -122,21 +122,20 @@ public class ExcluirClassificacao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExcluirClassificacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExcluirClassificacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExcluirClassificacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExcluirClassificacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExcluirClassificacao().setVisible(true);
+                new ExcluirCategoria().setVisible(true);
             }
         });
     }
