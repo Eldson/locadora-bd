@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
  * @author Elisson
  */
 public class Conexao {
+    
     public static Connection AbrirConecao(){
         Connection con = null;
         try{
           Class.forName("com.mysql.jdbc.Driver");
-          String url = "jdcb:mysql://localhost/locadora";
-          con = DriverManager.getConnection(url,"root", "123");  
+          String url = "jdbc:mysql://localhost/locadora";
+          con = DriverManager.getConnection(url,"root", "");  
         }catch (Exception e){
          JOptionPane.showMessageDialog(null,"Erro na conexao com o Banco",
          "Video Locadora", JOptionPane.ERROR_MESSAGE);
@@ -26,7 +27,7 @@ public class Conexao {
     
     }
     
-    public static void fecharConexao(Connection con){
+    public static void FecharConexao(Connection con){
         try{
         con.close();
         }catch (Exception e){
@@ -34,7 +35,4 @@ public class Conexao {
         }
     }
 
-    public static Connection AbrirConexao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

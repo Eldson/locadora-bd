@@ -5,6 +5,13 @@
  */
 package Principal;
 
+import Visao.Cadastrar.CadastarCategoria;
+import Visao.Cadastrar.CadastarClassificacao;
+import Visao.Cadastrar.CadastrarCliente;
+import Visao.Cadastrar.CadastrarDVD;
+import Visao.Cadastrar.CadastrarFilme;
+import Visao.Cadastrar.CadastrarFuncionario;
+
 /**
  *
  * @author aluno
@@ -39,12 +46,12 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        cadasCliente = new javax.swing.JMenuItem();
+        cadasFlime = new javax.swing.JMenuItem();
+        cadasDVD = new javax.swing.JMenuItem();
+        cadasCategoria = new javax.swing.JMenuItem();
+        cadasClassificacao = new javax.swing.JMenuItem();
+        cadasFuncionario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -140,30 +147,55 @@ public class Menu extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Categoria");
+        jMenu1.setText("cadastar");
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        cadasCliente.setText("Cliente");
+        cadasCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                cadasClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(cadasCliente);
 
-        jMenuItem2.setText("Filme");
-        jMenu1.add(jMenuItem2);
+        cadasFlime.setText("Filme");
+        cadasFlime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadasFlimeActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadasFlime);
 
-        jMenuItem3.setText("DVD");
-        jMenu1.add(jMenuItem3);
+        cadasDVD.setText("DVD");
+        cadasDVD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadasDVDActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadasDVD);
 
-        jMenuItem5.setText("Categoria");
-        jMenu1.add(jMenuItem5);
+        cadasCategoria.setText("Categoria");
+        cadasCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadasCategoriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadasCategoria);
 
-        jMenuItem4.setText("Classificação");
-        jMenu1.add(jMenuItem4);
+        cadasClassificacao.setText("Classificação");
+        cadasClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadasClassificacaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadasClassificacao);
 
-        jMenuItem6.setText("Funcionario");
-        jMenu1.add(jMenuItem6);
+        cadasFuncionario.setText("Funcionario");
+        cadasFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadasFuncionarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadasFuncionario);
 
         jMenuBar1.add(jMenu1);
 
@@ -274,21 +306,41 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void cadasClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasClienteActionPerformed
+       new CadastrarCliente().setVisible(true);
+    }//GEN-LAST:event_cadasClienteActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+         new CadastrarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
+        new CadastrarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
-        // TODO add your handling code here:
+         new CadastrarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void cadasFlimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasFlimeActionPerformed
+         
+    }//GEN-LAST:event_cadasFlimeActionPerformed
+
+    private void cadasDVDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasDVDActionPerformed
+       new CadastrarDVD().setVisible(true);
+    }//GEN-LAST:event_cadasDVDActionPerformed
+
+    private void cadasCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasCategoriaActionPerformed
+       new CadastarCategoria().setVisible(true);
+    }//GEN-LAST:event_cadasCategoriaActionPerformed
+
+    private void cadasClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasClassificacaoActionPerformed
+          new CadastarClassificacao().setVisible(true);        
+    }//GEN-LAST:event_cadasClassificacaoActionPerformed
+
+    private void cadasFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadasFuncionarioActionPerformed
+       new CadastrarFuncionario().setVisible(true);
+    }//GEN-LAST:event_cadasFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,6 +378,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cadasCategoria;
+    private javax.swing.JMenuItem cadasClassificacao;
+    private javax.swing.JMenuItem cadasCliente;
+    private javax.swing.JMenuItem cadasDVD;
+    private javax.swing.JMenuItem cadasFlime;
+    private javax.swing.JMenuItem cadasFuncionario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -337,7 +395,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
@@ -348,16 +405,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

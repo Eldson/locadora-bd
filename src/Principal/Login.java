@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         // TODO add your handling code here:
-        Connection con = Conexao.AbrirConexao();
+        Connection con = Conexao.AbrirConecao();
         FuncionarioDAO sql =  new FuncionarioDAO(con);
         String login = tfUsuario.getText();
         String senha = pfSenha.getText();

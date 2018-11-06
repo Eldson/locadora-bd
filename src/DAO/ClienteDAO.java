@@ -6,16 +6,25 @@
 package DAO;
 
 import Modelo.Cliente;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Elisson
  */
-public class ClienteDAO {
+public class ClienteDAO extends ExecuteSQL{
+
+    public ClienteDAO(Connection con) {
+        super(con);
+    }
+   
     public String Inserir_Cliente(Cliente a){
-     String sql = "insert into cliente values (0,?,?,?,?,?,?,?,?,?,?,?)";
+     String sql = "insert into cliente values (0,?,?,?,?,?,?,?,?,?,?)";
             try{
                 PreparedStatement ps = getCon().prepareStatement(sql);
                 
@@ -42,7 +51,35 @@ public class ClienteDAO {
             return e.getMessage();
             }
     }
-    
-    
-    
+//   listar cliente 
+   public List<Cliente> ListarCliente(){
+   String sql = "select idcliente, nome,rg,cpf,telefone,email,fron cliente";
+   List<Cliente> lista = new ArrayList<>();
+   try{
+   PreparedStatement ps = getCon().prepareStatement(sql);
+   ResultSet rs = ps.executeQuery();
+   
+       if (rs != null) {
+           while (rs.next()) {
+              Cliente a = new Cliente();
+              a.setCodigo(rs.getInt(1));
+              a.setNome(rs.getString(2));
+              a.setRG(rs.getString(3));
+              a.setCPF(rs.getString(4));
+              a.setTelefone(rs.getString(5));
+              a.setEmail(rs.getString(6));
+             
+              lista.add(a);
+           }
+           return lista;
+       }else{
+        return null;
+       }
+   }catch (SQLException e){
+   return null;
+   }
+   
+   
+   
+   }
 }

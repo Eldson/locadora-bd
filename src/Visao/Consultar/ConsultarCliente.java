@@ -5,6 +5,14 @@
  */
 package Visao.Consultar;
 
+import DAO.ClienteDAO;
+import DAO.Conexao;
+import Modelo.Cliente;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aluno
@@ -16,7 +24,37 @@ public class ConsultarCliente extends javax.swing.JFrame {
      */
     public ConsultarCliente() {
         initComponents();
+        
+        setTitle("Video Locadora");
+        AtualizarTable();
+        
+        
     }
+    private void AtualizarTable(){
+            Connection con = Conexao.AbrirConecao();
+            ClienteDAO bd = new ClienteDAO(con);
+            List<Cliente> lista = new ArrayList<>();
+            lista = bd.ListarCliente();
+            DefaultTableModel tbm =
+                    (DefaultTableModel) jtableConsulCliente.getModel();
+            while (tbm.getRowCount() > 0) {
+                tbm.removeRow(0);
+                
+            }
+            int i= 0;
+            for (Cliente tab : lista) {
+              tbm.addRow(new String[i]);
+              jtableConsulCliente.setValueAt(tab.getCodigo(), i, 0);
+              jtableConsulCliente.setValueAt(tab.getNome(), i, 1);
+              jtableConsulCliente.setValueAt(tab.getRG(), i, 2);
+              jtableConsulCliente.setValueAt(tab.getCPF(), i, 3);
+              jtableConsulCliente.setValueAt(tab.getTelefone(), i, 4);
+             jtableConsulCliente.setValueAt(tab.getEmail(), i, 5);
+              i++;
+                
+            }
+            Conexao.FecharConexao(con);
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +75,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtableConsulCliente = new javax.swing.JTable();
 
         jTextField1.setText("jTextField1");
 
@@ -77,7 +115,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtableConsulCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -88,7 +126,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
                 "Codigo", "Nome", "RG", "CPF", "Telefone", "Email"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtableConsulCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,9 +240,11 @@ public class ConsultarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jtableConsulCliente;
     // End of variables declaration//GEN-END:variables
+
+   
 }
