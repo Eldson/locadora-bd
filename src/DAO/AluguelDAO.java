@@ -5,10 +5,15 @@
  */
 package DAO;
 
+//import java.sql.Connection;
+
 /**
  *
  * @author Elisson
  */
 public class AluguelDAO {
-    
+//    public AluguelDAO(Connection con) {
+//        //super(con);
+//    }
+//    
 }

@@ -32,7 +32,7 @@ public class AlterarCliente extends javax.swing.JFrame {
         List<Cliente> lista = new ArrayList<>();
         lista = sql.CapturarCliente(cod);
         
-        for ( Cliente a: lista) {
+        for ( Cliente a : lista) {
             jTF_Codigo.setText("" + a.getCodigo());
             jTF_Nome.setText(a.getNome());
             jTF_CEP.setText(a.getCEP());
@@ -48,6 +48,9 @@ public class AlterarCliente extends javax.swing.JFrame {
         }
       Conexao.FecharConexao(con);
     }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -300,7 +303,8 @@ public class AlterarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jTF_codActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_codActionPerformed
-        String codigo = jTF_cod.getText();
+        
+        String codigo = jTF_Codigo.getText();
         Connection con = Conexao.AbrirConecao();
         ClienteDAO sql = new ClienteDAO(con);
         int cod = Integer.parseInt(codigo);

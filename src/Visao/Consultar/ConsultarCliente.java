@@ -22,14 +22,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarDVD
      */
-    public ConsultarCliente() {
-        initComponents();
-        
-        setTitle("Video Locadora");
-        AtualizarTable();
-        
-        
-    }
+    
     private void AtualizarTable(){
             Connection con = Conexao.AbrirConecao();
             ClienteDAO bd = new ClienteDAO(con);
@@ -55,6 +48,17 @@ public class ConsultarCliente extends javax.swing.JFrame {
             }
             Conexao.FecharConexao(con);
         }
+    
+    public ConsultarCliente() {
+        initComponents();
+        
+        setTitle("Video Locadora");
+        setSize(590, 370);
+        AtualizarTable();
+        
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,6 +104,11 @@ public class ConsultarCliente extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Imagens/pesquisar.jpg"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Imagens/pesquisar.jpg"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +156,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -179,7 +188,32 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
+            Connection con = Conexao.AbrirConecao();
+            ClienteDAO bd = new ClienteDAO(con);
+            List<Cliente> lista = new ArrayList<>();
+            String nome = jTextField2.getText();
+            lista = bd.Pesquisar_Nome_Cliente(nome);
+            DefaultTableModel tbm =
+                    (DefaultTableModel) jtableConsulCliente.getModel();
+            while (tbm.getRowCount() > 0) {
+                tbm.removeRow(0);
+                
+            }
+            int i= 0;
+            for (Cliente tab : lista) {
+              tbm.addRow(new String[i]);
+              jtableConsulCliente.setValueAt(tab.getCodigo(), i, 0);
+              jtableConsulCliente.setValueAt(tab.getNome(), i, 1);
+              jtableConsulCliente.setValueAt(tab.getRG(), i, 2);
+              jtableConsulCliente.setValueAt(tab.getCPF(), i, 3);
+              jtableConsulCliente.setValueAt(tab.getEmail(), i, 4);
+              jtableConsulCliente.setValueAt(tab.getTelefone(), i, 5);
+            
+              i++;
+                
+            }
+            Conexao.FecharConexao(con);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -191,8 +225,34 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        AtualizarTable();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Connection con = Conexao.AbrirConecao();
+            ClienteDAO bd = new ClienteDAO(con);
+            List<Cliente> lista = new ArrayList<>();
+            lista = bd.Pesquisar_Cod_Cliente(Integer.parseInt(jTextField3.getText()));
+            DefaultTableModel tbm =
+                    (DefaultTableModel) jtableConsulCliente.getModel();
+            while (tbm.getRowCount() > 0) {
+                tbm.removeRow(0);
+                
+            }
+            int i= 0;
+            for (Cliente tab : lista) {
+              tbm.addRow(new String[i]);
+              jtableConsulCliente.setValueAt(tab.getCodigo(), i, 0);
+              jtableConsulCliente.setValueAt(tab.getNome(), i, 1);
+              jtableConsulCliente.setValueAt(tab.getRG(), i, 2);
+              jtableConsulCliente.setValueAt(tab.getCPF(), i, 3);
+              jtableConsulCliente.setValueAt(tab.getTelefone(), i, 4);
+             jtableConsulCliente.setValueAt(tab.getEmail(), i, 5);
+              i++;
+                
+            }
+            Conexao.FecharConexao(con);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

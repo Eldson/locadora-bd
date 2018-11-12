@@ -53,7 +53,7 @@ public class ClienteDAO extends ExecuteSQL{
     }
 //   listar cliente 
    public List<Cliente> ListarCliente(){
-   String sql = "select idcliente, nome,rg,cpf,telefone,email,fron cliente";
+   String sql = "select * from cliente";
    List<Cliente> lista = new ArrayList<>();
    try{
    PreparedStatement ps = getCon().prepareStatement(sql);
@@ -64,10 +64,15 @@ public class ClienteDAO extends ExecuteSQL{
               Cliente a = new Cliente();
               a.setCodigo(rs.getInt(1));
               a.setNome(rs.getString(2));
+              a.setNascimento(rs.getString(3));
               a.setRG(rs.getString(3));
               a.setCPF(rs.getString(4));
-              a.setTelefone(rs.getString(5));
-              a.setEmail(rs.getString(6));
+              a.setEmail(rs.getString(5));
+              a.setTelefone(rs.getString(6));
+              a.setBairro(rs.getString(8));
+              a.setRua(rs.getString(9));
+              a.setNumero(rs.getInt(10));
+              a.setCEP(rs.getString(11));
              
               lista.add(a);
            }
@@ -84,7 +89,7 @@ public class ClienteDAO extends ExecuteSQL{
    }
    
   public List<Cliente> Pesquisar_Nome_Cliente(String nome){  
-  String sql = "select idcliente, nome,rg,cpf,telefone,email,from cliente where idcliente = '"+nome+"'";
+  String sql = "select * from cliente where nome LIKE '%"+ nome +"%'";
    List<Cliente> lista = new ArrayList<>();
    try{
    PreparedStatement ps = getCon().prepareStatement(sql);
@@ -93,12 +98,14 @@ public class ClienteDAO extends ExecuteSQL{
        if (rs != null) {
            while (rs.next()) {
               Cliente a = new Cliente();
+              
               a.setCodigo(rs.getInt(1));
               a.setNome(rs.getString(2));
               a.setRG(rs.getString(3));
               a.setCPF(rs.getString(4));
               a.setTelefone(rs.getString(5));
               a.setEmail(rs.getString(6));
+              
              
               lista.add(a);
            }
@@ -113,7 +120,7 @@ public class ClienteDAO extends ExecuteSQL{
   }
   
    public List<Cliente> Pesquisar_Cod_Cliente(int cod){
-     String sql = "select idcliente, nome,rg,cpf,telefone,email,from cliente where idcliente = '"+cod+"'";
+     String sql = "select idcliente, nome,rg,cpf,telefone,email from cliente where idcliente = '"+cod+"'";
    List<Cliente> lista = new ArrayList<>();
    try{
    PreparedStatement ps = getCon().prepareStatement(sql);
@@ -269,7 +276,7 @@ public class ClienteDAO extends ExecuteSQL{
    }
    
  public String Excluir_Cliente(Cliente a){
-   String sql = "delete from cliente where idcliente = ? nome = ? ";
+   String sql = "delete from cliente where idcliente = ? and nome = ? ";
    try{
      PreparedStatement ps = getCon().prepareStatement(sql);
      ps.setInt(1, a.getCodigo());

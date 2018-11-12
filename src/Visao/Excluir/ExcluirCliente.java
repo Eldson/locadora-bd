@@ -135,24 +135,24 @@ public class ExcluirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTF_codigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                String codigo = jTF_codigo.getText();
-                String nome = jCB_Nome.getSelectedItem().toString();
+                String Codigo = jTF_codigo.getText();
+                String Nome = jCB_Nome.getSelectedItem().toString();
                 
                 Connection con = Conexao.AbrirConecao();
                  ClienteDAO sql = new ClienteDAO(con);
                  Cliente a = new Cliente();
-                 if (nome.equals("")) {
+                 if (Nome.equals("")) {
                      JOptionPane.showMessageDialog(null, "Nenhum nome Selecionado", 
                              "Video Locadora", JOptionPane.WARNING_MESSAGE); 
         }else{
            int b = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir"
-                   +"\n ("+codigo+")("+nome+")","Video Locadora",
+                   +"\n ("+Codigo+")("+Nome+")","Video Locadora",
                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
            
                      if (b == 0) {
-                         int cod = Integer.parseInt(codigo);
-                         a.setNome(nome);
+                         int cod = Integer.parseInt(Codigo);
                          a.setCodigo(cod);
+                         a.setNome(Nome);
                          sql.Excluir_Cliente(a);
                          Conexao.FecharConexao(con);
                          dispose();
